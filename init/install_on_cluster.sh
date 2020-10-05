@@ -12,10 +12,10 @@ git clone --depth 1 https://github.com/neologd/mecab-ipadic-neologd.git
 pip install --upgrade mecab-python3
 
 # git clone on Master
-USER=CHANGE_TO_USER_NAME
-ROLE=$(/usr/share/google/get_metadata_value attributes/dataproc-role)
-REPOSITORY=CHANGE_TO_YOUR_REPOGITORY_URL
-if [["${ROLE}" == 'Master']]; then
-  cd home/$UESR
-  git clone ${REPOSITORY}
-fi
+# USER=root
+# ROLE=$(/usr/share/google/get_metadata_value attributes/dataproc-role)
+# REPOSITORY=CHANGE_TO_YOUR_REPOGITORY_URL
+# if [["${ROLE}" == 'Master']]; then
+#   cd home/$UESR
+#   git clone ${REPOSITORY}
+# fi

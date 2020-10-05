@@ -1,2 +1,4 @@
 #!/bin/bash
-gcloud dataproc clusters delete cluster
+REGION=asia-northeast1
+gcloud dataproc clusters delete cluster \
+  --region ${REGION}
