@@ -1,5 +1,5 @@
 #!/bin/bash
-REGION=asia-northeast1-b
+REGION=asia-northeast1
 CLUSTER_NAME=cluster
 SHELL_INSTALL_ON_CLUSTER=gs://
 gcloud dataproc clusters create ${CLUSTER_NAME} \
