@@ -11,7 +11,7 @@ gcloud dataproc clusters create ${CLUSTER_NAME} \
   --region ${REGION} \
   --optional-components=ANACONDA,JUPYTER \
   --enable-component-gateway \
-  --image-version=1.3 \
+  --image-version=1.5 \
   --bucket=${WORKER_BUCKET_NAME} \
   --worker-machine-type=n1-standard-2 \
   --master-machine-type=n1-standard-2 \
