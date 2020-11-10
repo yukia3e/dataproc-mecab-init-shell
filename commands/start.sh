@@ -17,6 +17,7 @@ gcloud dataproc clusters create ${CLUSTER_NAME} \
   --master-machine-type=n1-standard-2 \
   --scopes default,bigquery,https://www.googleapis.com/auth/bigtable.admin.table,https://www.googleapis.com/auth/bigtable.data,https://www.googleapis.com/auth/devstorage.full_control,sql-admin \
   --initialization-actions ${SHELL_INSTALL_ON_CLUSTER},${SHELL_CLOUD_SQL_PROXY} \
+  --initialization-action-timeout="20m" \
   --metadata "enable-cloud-sql-hive-metastore=false,additional-cloud-sql-instances=${CLOUDSQL_PROJECT_ID}:${REGION}:${CLOUDSQL_INSTANCE_NAME}=tcp:5432" \
   --zone=asia-northeast1-b \
   --num-workers=2

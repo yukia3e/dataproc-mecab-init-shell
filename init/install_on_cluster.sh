@@ -11,6 +11,12 @@ apt-get install -y mecab libmecab-dev mecab-ipadic mecab-ipadic-utf8 git make cu
 git clone --depth 1 https://github.com/neologd/mecab-ipadic-neologd.git
 ./mecab-ipadic-neologd/bin/install-mecab-ipadic-neologd -n -a -y
 pip install --upgrade mecab-python3
+
+URL_GCS_CUSTOM_DICT=gs://${YOUR_GCS_BUCKET}/dict/*.dic
+DIR_CUSTOM_DICT=/usr/lib/x86_64-linux-gnu/mecab/dic/${YOUR_DICT_DIR_NAME}
+mkdir $DIR_CUSTOM_DICT
+gsutil cp $URL_GCS_CUSTOM_DICT $DIR_CUSTOM_DICT/
+# echo "userdic = $DIR_CUSTOM_DICT/industry_keywords.dic,$DIR_CUSTOM_DICT/brand_indexes.dic" >> /etc/mecabrc
 cp /etc/mecabrc /usr/local/etc/
 
 # JAR
