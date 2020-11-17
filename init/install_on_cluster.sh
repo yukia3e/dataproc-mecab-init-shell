@@ -8,16 +8,27 @@ pip install --upgrade google-api-python-client
 
 # install Mecab
 apt-get install -y mecab libmecab-dev mecab-ipadic mecab-ipadic-utf8 git make curl xz-utils file swig
+
+## install mecab-ipadic-neologd
 git clone --depth 1 https://github.com/neologd/mecab-ipadic-neologd.git
 ./mecab-ipadic-neologd/bin/install-mecab-ipadic-neologd -n -a -y
-pip install --upgrade mecab-python3
 
+## install mecab-python3
+pip install --upgrade mecab-python3
+cp /etc/mecabrc /usr/local/etc/
+
+## install user dictionaries
 URL_GCS_CUSTOM_DICT=gs://${YOUR_GCS_BUCKET}/dict/*.dic
 DIR_CUSTOM_DICT=/usr/lib/x86_64-linux-gnu/mecab/dic/${YOUR_DICT_DIR_NAME}
 mkdir $DIR_CUSTOM_DICT
 gsutil cp $URL_GCS_CUSTOM_DICT $DIR_CUSTOM_DICT/
 # echo "userdic = $DIR_CUSTOM_DICT/industry_keywords.dic,$DIR_CUSTOM_DICT/brand_indexes.dic" >> /etc/mecabrc
-cp /etc/mecabrc /usr/local/etc/
+
+## disable invoking unknown word processing
+URL_GCS_CHAR_DEF=gs://${YOUR_GCS_BUCKET}/char.def
+DIR_NEOLOGD_CHAR_DEF=/usr/share/mecab/dic/ipadic/mecab-ipadic-neologd/build/
+gsutil cp $URL_GCS_CHAR_DEF $DIR_CUSTOM_DICT/
+find $DIR_NEOLOGD_CHAR_DEF -name char.def -type f | xargs -i cp $DIR_CUSTOM_DICT/char.def {}
 
 # JAR
 JAR_PATH=/usr/local/lib/jars
