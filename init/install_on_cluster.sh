@@ -6,6 +6,9 @@ apt-get install -y python-pip
 pip install --upgrade pip
 pip install --upgrade google-api-python-client
 
+# install jaconv
+pip install --upgrade jaconv
+
 # install Mecab
 apt-get install -y mecab libmecab-dev mecab-ipadic mecab-ipadic-utf8 git make curl xz-utils file swig
 
